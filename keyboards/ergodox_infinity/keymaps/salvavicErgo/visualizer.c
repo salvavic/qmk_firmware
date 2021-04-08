@@ -41,7 +41,7 @@ static void get_visualizer_layer_and_color(visualizer_state_t* state) {
 
     // Set the text and color based on the layout
     switch (biton32(default_layer_state)) {
-        case _0:
+        case _Capa0:
             state->layer_text       = "0";
             state->target_lcd_color = LCD_COLOR(0, saturation, intensity);  // red
             break;
@@ -53,7 +53,7 @@ static void get_visualizer_layer_and_color(visualizer_state_t* state) {
 
     // If a function layer is active, set the text/color for that instead
     switch (biton32(state->status.layer)) {
-        case _1:
+        case _Capa1:
             state->layer_text       = "1";
             state->target_lcd_color = LCD_COLOR(141, saturation, intensity);  // blue
             break;
@@ -61,11 +61,11 @@ static void get_visualizer_layer_and_color(visualizer_state_t* state) {
         //     state->layer_text       = "Func 2";
         //     state->target_lcd_color = LCD_COLOR(18, saturation, intensity);  // orange
         //     break;
-        case _2:
+        case _Capa2:
             state->layer_text       = "2";
             state->target_lcd_color = LCD_COLOR(194, saturation, intensity);  // purple
             break;
-        case _3:
+        case _Capa3:
             state->layer_text       = "3";
             state->target_lcd_color = LCD_COLOR(80, saturation, intensity);
             break;
