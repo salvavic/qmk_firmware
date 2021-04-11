@@ -66,7 +66,7 @@ static void get_visualizer_layer_and_color(visualizer_state_t* state) {
             state->target_lcd_color = LCD_COLOR(194, saturation, intensity);  // purple
             break;
         case _FN:
-            state->layer_text       = "Función";
+            state->layer_text       = "Funcion";
             state->target_lcd_color = LCD_COLOR(80, saturation, intensity);
             break;
         default:
