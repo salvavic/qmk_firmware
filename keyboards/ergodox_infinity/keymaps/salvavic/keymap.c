@@ -3,7 +3,6 @@
 #include "layers.h"
 #include "keymap_spanish.h"
 
-#define TAPPING_TOGGLE 2
 
 #define _QWERTY 0 // default QWERTY base layer
 #define _FN 1     // Capa Funciones
