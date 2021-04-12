@@ -18,6 +18,7 @@
 #define KEYBOARDS_ERGODOX_INFINITY_SIMPLE_VISUALIZER_H_
 
 // Currently we are assuming that both the backlight and LCD are enabled
+// Currently we are assuming that both the backlight and LCD are enabled
 // But it's entirely possible to write a custom visualizer that use only
 // one of them
 #ifndef LCD_BACKLIGHT_ENABLE
