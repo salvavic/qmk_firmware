@@ -3,5 +3,6 @@
 enum custom_layers {
     _QWERTY,
     _FN,
+    _SIMBOLOS,
     _MOUSE,
 };

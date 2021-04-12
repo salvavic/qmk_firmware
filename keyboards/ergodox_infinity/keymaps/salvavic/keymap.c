@@ -3,10 +3,10 @@
 #include "layers.h"
 #include "keymap_spanish.h"
 
-
-#define _QWERTY 0 // default QWERTY base layer
-#define _FN 1     // Capa Funciones
-#define _MOUSE 2  // Capa RATON
+#define _QWERTY     0  // default QWERTY base layer
+#define _FN         1  // Capa Funciones
+#define _SIMBOLOS   2  // Capa SIMBOLOS
+#define _MOUSE      3  // Capa RATON
 
 #define KC_MAC_UNDO LGUI(KC_Z)
 #define KC_MAC_CUT LGUI(KC_X)
@@ -108,15 +108,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* BASE LAYER (QWERTY)
      *
      * ┌──────┬────┬────┬────┬────┬────┬────┐              ┌────┬────┬────┬────┬────┬────┬──────┐
-     * │  ESC │  1 │  2 │  3 │  4 │  5 │HOME│              │END │  6 │  7 │  8 │  9 │  0 │  '   │
+     * │  ESC │  1 │  2 │  3 │  4 │  5 │MOUS│              │MOUS│  6 │  7 │  8 │  9 │  0 │  '   │
      * ├──────┼────┼────┼────┼────┼────┼────┤              ├────┼────┼────┼────┼────┼────┼──────┤
-     * │  TAB │  Q │  W │  E │  R │  T │PGUP│              │PGDO│  Y │  U │  I │  O │  P │  `   │
+     * │      │  Q │  W │  E │  R │  T │SIMB│              │SIMB│  Y │  U │  I │  O │  P │  `   │
      * ├──────┼────┼────┼────┼────┼────┤    │              │    ├────┼────┼────┼────┼────┼──────┤
-     * │ CAPS │  A │  S │  D │  F │  G ├────┤              ├────┤  H │  J │  K │  L │  Ñ │  ´   │
-     * ├──────┼────┼────┼────┼────┼────┤TT 1│              │TT 1├────┼────┼────┼────┼────┼──────┤
+     * │ TAB  │  A │  S │  D │  F │  G ├────┤              ├────┤  H │  J │  K │  L │  Ñ │  ´   │
+     * ├──────┼────┼────┼────┼────┼────┤ FN │              │ FN ├────┼────┼────┼────┼────┼──────┤
      * │MAYUS │  Z │  X │  C │  V │  B │    │              │    │  N │  M │  , │  . │ -  │MAYUS │
      * └─┬────┼────┼────┼────┼────┼────┴────┘              └────┴────┼────┼────┼────┼────┼────┬─┘
-     *   │LCtl│LAlt│LGUI│ º  │ <> │                                  │Left│Down│ Up │Rght│TT 2│
+     *   │LCtl│LAlt│LGUI│ º  │ <> │                                  │Left│Down│ Up │Rght│SIMB│
      *   └────┴────┴────┴────┴────┘    ┌────┬────┐    ┌────┬────┐    └────┴────┴────┴────┴────┘
      *                                 │    │TT 2│    │RAlt│RCtl│
      *                            ┌────┼────┼────┤    ├────┼────┼────┐
@@ -127,63 +127,101 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_QWERTY] = LAYOUT_ergodox(  // QWERTY persistent layer
         // left hand
-        KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,      KC_5,    KC_HOME,
-        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,    KC_PGUP,
-        KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,      KC_G,
-        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,      KC_B,    TT(_FN),
+        KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,      KC_5,    TT(_MOUSE),
+        _______,  KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,    TT(_SIMBOLOS),
+        KC_TAB, KC_A,    KC_S,    KC_D,    KC_F,      KC_G,
+        LSFT_T(KC_CAPS), KC_Z,    KC_X,    KC_C,    KC_V,      KC_B,    TT(_FN),
         KC_LCTL, KC_LALT, KC_LGUI, ES_MORD,  ES_LABK,
                                             _______, TT(_MOUSE),
                                                        KC_HOME,
                                    KC_BSPC, KC_DEL,    KC_END,
         // right hand
-        KC_END, KC_6,     KC_7,    KC_8,     KC_9,    KC_0,      ES_QUOT,
-        KC_PGDN, KC_Y,     KC_U,    KC_I,     KC_O,    KC_P,     KC_LBRC,
+        TT(_MOUSE), KC_6,     KC_7,    KC_8,     KC_9,    KC_0,      ES_QUOT,
+        TT(_SIMBOLOS), KC_Y,     KC_U,    KC_I,     KC_O,    KC_P,     KC_LBRC,
                  KC_H,     KC_J,    KC_K,     KC_L,    KC_SCLN,  KC_QUOT,
-        TT(_FN), KC_N,     KC_M,    KC_COMM,  KC_DOT,  KC_SLSH,  KC_RSFT,
-                           KC_LEFT, KC_DOWN,  KC_UP,   KC_RIGHT, TT(_MOUSE),
+        TT(_FN), KC_N,     KC_M,    KC_COMM,  KC_DOT,  KC_SLSH,  RSFT_T(KC_CAPS),
+                           KC_LEFT, KC_DOWN,  KC_UP,   KC_RIGHT, TT(_SIMBOLOS),
         KC_RALT, KC_RCTRL,
         KC_INS,
         KC_APP, KC_ENT,   KC_SPC),
 
     /* FUNCTION LAYER: Function keys and interaction
      * ┌──────┬────┬────┬────┬────┬────┬────┐              ┌────┬────┬────┬────┬────┬────┬──────┐
-     * │PrtScr│ F1 │ F2 │ F3 │ F4 │ F5 │    │              │ F6 │ F7 │ F8 │ F9 │ F10│ F11│  F12 │
+     * │PrtScr│ F1 │ F2 │ F3 │ F4 │ F5 │    │              │    │ F6 │ F7 │ F8 │ F9 │ F11│  F11 │
      * ├──────┼────┼────┼────┼────┼────┼────┤              ├────┼────┼────┼────┼────┼────┼──────┤
-     * │CapPat│  ( │  ) │ [  │  ] │    │TT 2│              │TT 2│    │    │    │ScUp│ScRt│      │
+     * │CapPat│    │    │    │    │    │    │              │    │    │    │    │ScUp│ScRt│  F12 │
      * ├──────┼────┼────┼────┼────┼────┤    │              │    ├────┼────┼────┼────┼────┼──────┤
-     * │   ;  │  { │  } │    │C V │C C ├────┤              ├────┤    │Left│Down│ Up │Rght│      │
+     * │      │    │    │    │C V │C C ├────┤              ├────┤    │Left│Down│ Up │Rght│      │
      * ├──────┼────┼────┼────┼────┼────┤    │              │    ├────┼────┼────┼────┼────┼──────┤
-     * │  ¿   │  ? │  ¡ │ !  │    │C X │    │              │    │    │Home│PgDn│PgUp│ End│      │
+     * │      │    │    │    │    │C X │    │              │    │    │Home│PgDn│PgUp│ End│      │
      * └─┬────┼────┼────┼────┼────┼────┴────┘              └────┴────┼────┼────┼────┼────┼────┬─┘
-     *   │  * │  + │    │    │    │                                  │LOff│LED-│LED+│ LOn│    │
+     *   │    │    │    │    │    │                                  │    │    │    │    │    │
      *   └────┴────┴────┴────┴────┘    ┌────┬────┐    ┌────┬────┐    └────┴────┴────┴────┴────┘
      *                                 │WbBk│WbFd│    │Prev│Next│
      *                            ┌────┼────┼────┤    ├────┼────┼────┐
-     *                            │    │    │TabL│    │Vol+│    │    │
+     *                            │    │    │    │    │Vol+│    │    │
      *                            │    │    ├────┤    ├────┤Mute│Play│
-     *                            │    │    │TabR│    │Vol-│    │    │
+     *                            │    │    │    │    │Vol-│    │    │
      *                            └────┴────┴────┘    └────┴────┴────┘
      */
     [_FN] = LAYOUT_ergodox(
         // left hand
         KC_PSCR, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _______,
-        SGUI(KC_S), ES_LPRN, ES_RPRN, ES_LBRC, ES_RBRC, _______, TT(_MOUSE),
-        ES_SCLN, ES_LCBR, ES_RCBR, _______, LCTL(KC_V), LCTL(KC_C),
-        ES_IQUE, ES_QUES, ES_IEXL, ES_EXLM, _______, LCTL(KC_X), _______,
-        ES_ASTR, ES_PLUS, _______, _______, _______,
+        SGUI(KC_S), _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, LCTL(KC_V), LCTL(KC_C),
+        _______, _______, _______, _______, _______, LCTL(KC_X), _______,
+        _______, _______, _______, _______, _______,
                                             KC_WBAK, KC_WFWD,  // Web forward/back
-                                                     C(KC_PGUP),
-                                   _______, _______, C(KC_PGDN),
+                                                     _______,
+                                   _______, _______, _______,
         // right hand
-        KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,   KC_F11, KC_F12,
-        TT(_MOUSE), _______, _______, _______, KC_WH_U, KC_WH_R,  _______,
+        _______,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_F11,
+        _______, _______, _______, _______, KC_WH_U, KC_WH_R,  KC_F12,
                  _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, _______,
         _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,   _______,
-                          BL_OFF,  BL_DEC,  BL_INC,  BL_ON,    _______,
+                          _______,  _______,  _______,  _______,    _______,
         KC_MPRV, KC_MNXT,
         KC_VOLU,
         KC_VOLD, KC_MUTE, KC_MPLY),
 
+/* SIMBOLOS : Simbolos
+     * ┌──────┬────┬────┬────┬────┬────┬────┐              ┌────┬────┬────┬────┬────┬────┬──────┐
+     * │   ;  │  ( │  ) │  [ │ ]  │    │    │              │    │    │    │    │    │    │      │
+     * ├──────┼────┼────┼────┼────┼────┼────┤              ├────┼────┼────┼────┼────┼────┼──────┤
+     * │   *  │ {  │  } │  @ │ #  │    │    │              │    │    │    │    │    │    │      │
+     * ├──────┼────┼────┼────┼────┼────┤    │              │    ├────┼────┼────┼────┼────┼──────┤
+     * │   +  │ &  │  | │  / │ \  │    ├────┤              ├────┤    │    │    │    │    │      │
+     * ├──────┼────┼────┼────┼────┼────┤    │              │    ├────┼────┼────┼────┼────┼──────┤
+     * │  ¿   │  ? │  ¡ │ !  │    │    │    │              │    │    │    │    │    │    │      │
+     * └─┬────┼────┼────┼────┼────┼────┴────┘              └────┴────┼────┼────┼────┼────┼────┬─┘
+     *   │ <  │ >  │    │    │    │                                  │    │    │    │    │    │
+     *   └────┴────┴────┴────┴────┘    ┌────┬────┐    ┌────┬────┐    └────┴────┴────┴────┴────┘
+     *                                 │    │    │    │    │    │
+     *                            ┌────┼────┼────┤    ├────┼────┼────┐
+     *                            │    │    │    │    │    │    │    │
+     *                            │    │    ├────┤    ├────┤    │    │
+     *                            │    │    │    │    │    │    │    │
+     *                            └────┴────┴────┘    └────┴────┴────┘
+     */
+    [_SIMBOLOS] = LAYOUT_ergodox(
+        // left hand
+        ES_SCLN, ES_LPRN,   ES_RPRN,   ES_LBRC,   ES_RBRC,   _______,   _______,
+        ES_ASTR, ES_LCBR, ES_RCBR, ES_AT, ES_HASH, _______, _______,
+        ES_PLUS, ES_AMPR, ES_PIPE, ES_SLSH, ES_BSLS, _______,
+        ES_IQUE, ES_QUES, ES_IEXL, ES_EXLM, _______, _______, _______,
+        ES_LABK, ES_RABK, _______, _______, _______,
+                                            _______, _______,
+                                                     _______,
+                                   _______, _______, _______,
+        // right hand
+        _______,   _______,   _______,   _______,   _______,   _______, _______,
+        _______, _______, _______, _______, _______, _______,  _______,
+                 _______, _______, _______, _______,   _______, _______,
+        _______, _______, _______, _______, _______, _______,   _______,
+                          _______,  _______,  _______,  _______,    _______,
+        _______, _______,
+        _______,
+        _______, _______, _______),
     /* MOUSE: Ratón
      * ┌──────┬────┬────┬────┬────┬────┬────┐              ┌────┬────┬────┬────┬────┬────┬──────┐
      * │ FLASH│    │    │    │    │    │    │              │    │    │    │    │    │    │FLASH │

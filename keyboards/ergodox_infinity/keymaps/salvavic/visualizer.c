@@ -32,12 +32,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 static void get_visualizer_layer_and_color(visualizer_state_t* state) {
     // Default saturation is 127/255 (50%)
-    uint8_t saturation = 255;
-    uint8_t intensity = 255;
+    uint8_t saturation = 127;
+    uint8_t intensity = 127;
     // Increase the saturation if Caps Lock is turned on
-    // if (state->status.leds & (1u << USB_LED_CAPS_LOCK)) {
-    //     saturation = 255;
-    // }
+    if (state->status.leds & (1u << USB_LED_CAPS_LOCK)) {
+        saturation = 255;
+        intensity = 255;
+        state->target_lcd_color = LCD_COLOR(0, saturation, intensity);
+    }
 
     // Set the text and color based on the layout
     switch (biton32(default_layer_state)) {
@@ -59,15 +61,19 @@ static void get_visualizer_layer_and_color(visualizer_state_t* state) {
     switch (biton32(state->status.layer)) {
         case _QWERTY:
             state->layer_text       = "Qwerty";
-            state->target_lcd_color = LCD_COLOR(141, saturation, intensity);  // blue
+            state->target_lcd_color = LCD_COLOR(0, 0, intensity);  // Inicial
             break;
         case _MOUSE:
             state->layer_text       = "Mouse";
             state->target_lcd_color = LCD_COLOR(194, saturation, intensity);  // purple
             break;
         case _FN:
-            state->layer_text       = "Funcion";
+            state->layer_text       = "FUNCION";
             state->target_lcd_color = LCD_COLOR(80, saturation, intensity);
+            break;
+        case _SIMBOLOS:
+            state->layer_text       = "SIMBOLOS";
+            state->target_lcd_color = LCD_COLOR(141, saturation, intensity);
             break;
         default:
             // If we're not on one of the special layers, don't change
