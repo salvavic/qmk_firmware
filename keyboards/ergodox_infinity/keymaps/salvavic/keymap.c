@@ -155,7 +155,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ├──────┼────┼────┼────┼────┼────┤    │              │    ├────┼────┼────┼────┼────┼──────┤
      * │  ¿   │  ? │  ¡ │ !  │    │C X │    │              │    │    │Home│PgDn│PgUp│ End│      │
      * └─┬────┼────┼────┼────┼────┼────┴────┘              └────┴────┼────┼────┼────┼────┼────┬─┘
-     *   │    │    │    │    │    │                                  │LOff│LED-│LED+│ LOn│    │
+     *   │  * │  + │    │    │    │                                  │LOff│LED-│LED+│ LOn│    │
      *   └────┴────┴────┴────┴────┘    ┌────┬────┐    ┌────┬────┐    └────┴────┴────┴────┴────┘
      *                                 │WbBk│WbFd│    │Prev│Next│
      *                            ┌────┼────┼────┤    ├────┼────┼────┐
@@ -170,7 +170,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         SGUI(KC_S), ES_LPRN, ES_RPRN, ES_LBRC, ES_RBRC, _______, TT(_MOUSE),
         ES_SCLN, ES_LCBR, ES_RCBR, _______, LCTL(KC_V), LCTL(KC_C),
         ES_IQUE, ES_QUES, ES_IEXL, ES_EXLM, _______, LCTL(KC_X), _______,
-        _______, _______, _______, _______, _______,
+        ES_ASTR, ES_PLUS, _______, _______, _______,
                                             KC_WBAK, KC_WFWD,  // Web forward/back
                                                      C(KC_PGUP),
                                    _______, _______, C(KC_PGDN),
