@@ -33,7 +33,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 static void get_visualizer_layer_and_color(visualizer_state_t* state) {
     // Default saturation is 127/255 (50%)
     uint8_t saturation = 127;
-    uint8_t intensity = 127;
+    uint8_t intensity = 255;
     // Increase the saturation if Caps Lock is turned on
     if (state->status.leds & (1u << USB_LED_CAPS_LOCK)) {
         saturation = 255;
@@ -73,7 +73,7 @@ static void get_visualizer_layer_and_color(visualizer_state_t* state) {
             break;
         case _SIMBOLOS:
             state->layer_text       = "SIMBOLOS";
-            state->target_lcd_color = LCD_COLOR(141, saturation, intensity);
+            state->target_lcd_color = LCD_COLOR(0, saturation, intensity);
             break;
         default:
             // If we're not on one of the special layers, don't change
