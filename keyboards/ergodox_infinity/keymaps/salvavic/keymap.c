@@ -156,7 +156,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         KC_ESC,  TD(TD_1),    TD(TD_2),    TD(TD_3),    TD(TD_4),      TD(TD_5),    KC_ESC,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,    TT(_MOUSE),
-        KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,      KC_G,
+        KC_CAPS, (KC_A),    (KC_S),    (KC_D),    (KC_F),      KC_G,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,      KC_B,    ES_MORD,
         KC_LCTL, KC_LGUI, TD(TD_ALT), TT(_FN),  TT(_SIMBOLOS),
                                             KC_BSPC, KC_INS,
@@ -165,7 +165,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // right hand
         KC_ESC, TD(TD_6), TD(TD_7), TD(TD_8), TD(TD_9),TD(TD_10), TD(TD_11),
         TT(_MOUSE), KC_Y, KC_U, KC_I, KC_O, KC_P, TD(TD_12),
-                 KC_H, KC_J, KC_K, KC_L, KC_SCLN,  KC_QUOT,
+                 KC_H, (KC_J), (KC_K), (KC_L), (KC_SCLN),  KC_QUOT,
         KC_INS, KC_N, KC_M, TD(TD_PC), KC_DOT,  KC_SLSH,  KC_RSFT,
                             KC_LEFT, KC_RIGHT,  KC_UP,   KC_DOWN, TT(_SIMBOLOS),
         KC_RALT, KC_RCTRL,
