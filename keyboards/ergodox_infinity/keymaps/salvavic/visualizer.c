@@ -63,6 +63,10 @@ static void get_visualizer_layer_and_color(visualizer_state_t* state) {
             state->layer_text       = "Qwerty";
             state->target_lcd_color = LCD_COLOR(0, 0, intensity);  // Inicial
             break;
+        case _COLEMAK:
+            state->layer_text       = "COLEMAK";
+            state->target_lcd_color = LCD_COLOR(255, saturation, intensity);  // Inicial
+            break;
         case _MOUSE:
             state->layer_text       = "Mouse";
             state->target_lcd_color = LCD_COLOR(194, saturation, intensity);  // purple

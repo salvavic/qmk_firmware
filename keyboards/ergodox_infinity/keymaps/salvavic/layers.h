@@ -5,4 +5,5 @@ enum custom_layers {
     _FN,
     _SIMBOLOS,
     _MOUSE,
+    _COLEMAK,
 };
