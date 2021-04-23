@@ -45,31 +45,19 @@ static void get_visualizer_layer_and_color(visualizer_state_t* state) {
     switch (biton32(default_layer_state)) {
         case _QWERTY:
             state->layer_text       = "QWERTY";
-            state->target_lcd_color = LCD_COLOR(0, saturation, intensity);  // red
+            state->target_lcd_color = LCD_COLOR(0, 0, intensity);  // red
             break;
-        case _MOUSE:
-            state->layer_text       = "Raton";
-            state->target_lcd_color = LCD_COLOR(0, 0, 255);  // yellow=35
-            break;
-        case _FN:
-            state->layer_text       = "FUNCION";
-            state->target_lcd_color = LCD_COLOR(0, 19, 255);  // Azul=35
+        case _COLEMAK:
+            state->layer_text       = "COLEMAK";
+            state->target_lcd_color = LCD_COLOR(200, saturation, intensity);  // yellow=35
             break;
     }
 
     // If a function layer is active, set the text/color for that instead
     switch (biton32(state->status.layer)) {
-        case _QWERTY:
-            state->layer_text       = "Qwerty";
-            state->target_lcd_color = LCD_COLOR(0, 0, intensity);  // Inicial
-            break;
-        case _COLEMAK:
-            state->layer_text       = "COLEMAK";
-            state->target_lcd_color = LCD_COLOR(200, saturation, intensity);  // Inicial
-            break;
         case _MOUSE:
-            state->layer_text       = "Mouse";
-            state->target_lcd_color = LCD_COLOR(194, saturation, intensity);  // purple
+            state->layer_text       = "RATON";
+            state->target_lcd_color = LCD_COLOR(160, saturation, intensity);  // purple
             break;
         case _FN:
             state->layer_text       = "FUNCION";

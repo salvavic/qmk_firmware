@@ -4,9 +4,10 @@
 #include "keymap_spanish.h"
 
 #define _QWERTY     0  // default QWERTY base layer
-#define _FN         1  // Capa Funciones
-#define _SIMBOLOS   2  // Capa SIMBOLOS
-#define _MOUSE      3  // Capa RATON
+#define _COLEMAK    1  // default QWERTY base layer
+#define _FN         2  // Capa Funciones
+#define _SIMBOLOS   3  // Capa SIMBOLOS
+#define _MOUSE      4  // Capa RATON
 
 #define KC_MAC_UNDO LGUI(KC_Z)
 #define KC_MAC_CUT LGUI(KC_X)
@@ -67,7 +68,8 @@ enum custom_keycodes {
     EPRM,
     VRSN,
     RGB_SLD,
-    QWERTY
+    QWERTY,
+    COLEMAK
 };
 enum unicode_names {
     // LEFT HAND
@@ -130,7 +132,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 
 };
 
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* BASE (QWERTY)
      *
@@ -143,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ├──────┼────┼────┼────┼────┼────┤  º │              │FN  ├────┼────┼────┼────┼────┼──────┤
      * │MAYUS │  Z │  X │  C │  V │  B │    │              │    │  N │  M │  , │  . │  - │MAYUS │
      * └─┬────┼────┼────┼────┼────┼────┴────┘              └────┴────┼────┼────┼────┼────┼────┬─┘
-     *   │LCtl│LGUI|LAlt│ FN │SIMB│                                  │  ← │  → │  ↑ │  ↓ │SIMB│
+     *   │LCtl│LGUI|LAlt│ FN │SIMB│                                  │  ← │  ↑ │  → │  ↓ │SIMB│
      *   └────┴────┴────┴────┴────┘    ┌────┬────┐    ┌────┬────┐    └────┴────┴────┴────┴────┘
      *                                 │Home│ End│    │RAlt│RCtl│
      *                            ┌────┼────┼────┤    ├────┼────┼────┐
@@ -154,7 +155,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_QWERTY] = LAYOUT_ergodox(  // QWERTY persistent layer
         // left hand
-        KC_ESC,  TD(TD_1),    TD(TD_2),    TD(TD_3),    TD(TD_4),      TD(TD_5),    TT(_COLEMAK),
+        KC_ESC,  TD(TD_1),    TD(TD_2),    TD(TD_3),    TD(TD_4),      TD(TD_5),    COLEMAK,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,    TT(_MOUSE),
         KC_CAPS, (KC_A),    (KC_S),    (KC_D),    (KC_F),      KC_G,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,      KC_B,    ES_MORD,
@@ -163,11 +164,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                        KC_PGUP,
                                    KC_BSPC, KC_DEL,    KC_PGDN,
         // right hand
-        TT(_COLEMAK), TD(TD_6), TD(TD_7), TD(TD_8), TD(TD_9),TD(TD_10), TD(TD_11),
+        COLEMAK, TD(TD_6), TD(TD_7), TD(TD_8), TD(TD_9),TD(TD_10), TD(TD_11),
         TT(_MOUSE), KC_Y, KC_U, KC_I, KC_O, KC_P, TD(TD_12),
                  KC_H, (KC_J), (KC_K), (KC_L), (KC_SCLN),  KC_QUOT,
         TT(_FN), KC_N, KC_M, TD(TD_PC), KC_DOT,  KC_SLSH,  KC_RSFT,
-                            KC_LEFT, KC_RIGHT,  KC_UP,   KC_DOWN, TT(_SIMBOLOS),
+                            KC_LEFT, KC_UP, KC_DOWN, KC_RIGHT, TT(_SIMBOLOS),
         KC_RALT, KC_RCTRL,
         KC_INS,
         KC_APP, KC_ENT,   KC_SPC),
@@ -194,23 +195,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_COLEMAK] = LAYOUT_ergodox(  // Colemak persistent layer (default)
         // left hand
-        _______,  KC_1,    KC_2,    KC_3,    KC_4,      KC_5, _______,
-        _______,  KC_Q,    KC_W,    KC_F,    KC_P,      KC_G, _______,
-        _______, KC_A,    KC_R,    KC_S,    KC_T,      KC_D,
-        _______, KC_Z,    KC_X,    KC_C,    KC_V,      KC_B, _______,
-        _______, _______, _______,  _______, _______,
-                                            _______, _______,
-                                                       _______,
-                                   _______, _______,    _______,
+        KC_ESC,  TD(TD_1),    TD(TD_2),    TD(TD_3),    TD(TD_4),      TD(TD_5),    QWERTY,
+        KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,      KC_G, TT(_MOUSE),
+        KC_CAPS, KC_A,    KC_R,    KC_S,    KC_T,      KC_D,
+        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,      KC_B, ES_MORD,
+        KC_LCTL, KC_LGUI, KC_LALT, TT(_FN),  TT(_SIMBOLOS),
+                                            KC_HOME, KC_END,
+                                                       KC_PGUP,
+                                   KC_BSPC, KC_DEL,    KC_PGDN,
         // right hand
-        _______,  KC_6,     KC_7,    KC_8,     KC_9,    KC_0,     _______,
-        _______, KC_J,     KC_L,    KC_U,     KC_Y,    KC_SCLN,  _______,
-                 KC_H,     KC_N,    KC_E,     KC_I,    KC_O,     _______,
-        _______, KC_K,     KC_M,    _______,  _______,  _______,  _______,
-                           _______, _______,  _______,   _______, _______,
-        _______, _______,
-        _______,
-        _______, _______,   _______),
+        QWERTY, TD(TD_6), TD(TD_7), TD(TD_8), TD(TD_9),TD(TD_10), TD(TD_11),
+        TT(_MOUSE), KC_J,     KC_L,    KC_U,     KC_Y,    KC_SCLN,  TD(TD_12),
+                 KC_H,     KC_N,    KC_E,     KC_I,    KC_O,     KC_QUOT,
+        TT(_FN), KC_K,     KC_M,    KC_DOT,  KC_SLSH,  KC_SLSH,  KC_RSFT,
+                            KC_LEFT, KC_RIGHT,  KC_UP,   KC_DOWN, TT(_SIMBOLOS),
+        KC_RALT, KC_RCTRL,
+        KC_INS,
+        KC_APP, KC_ENT,   KC_SPC),
 
 /* SIMBOLOS : Simbolos2
      * ┌──────┬────┬────┬────┬────┬────┬────┐              ┌────┬────┬────┬────┬────┬────┬──────┐
@@ -359,6 +360,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case QWERTY:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_QWERTY);
+            }
+            return false;
+            break;
+        case COLEMAK:
+            if (record->event.pressed) {
+                set_single_persistent_default_layer(_COLEMAK);
             }
             return false;
             break;
