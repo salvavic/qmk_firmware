@@ -43,18 +43,29 @@ static void get_visualizer_layer_and_color(visualizer_state_t* state) {
 
     // Set the text and color based on the layout
     switch (biton32(default_layer_state)) {
-        case _QWERTY:
-            state->layer_text       = "QWERTY";
-            state->target_lcd_color = LCD_COLOR(0, 0, intensity);  // red
-            break;
         case _COLEMAK:
             state->layer_text       = "COLEMAK";
             state->target_lcd_color = LCD_COLOR(200, saturation, intensity);  // yellow=35
+            break;
+
+        case _QWERTY:
+            state->layer_text       = "QWERTY";
+            state->target_lcd_color = LCD_COLOR(0, 0, intensity);  // red
             break;
     }
 
     // If a function layer is active, set the text/color for that instead
     switch (biton32(state->status.layer)) {
+        // case _COLEMAK:
+        //     state->layer_text       = "COLEMAK";
+        //     state->target_lcd_color = LCD_COLOR(200, saturation, intensity);  // yellow=35
+        //     break;
+
+        // case _QWERTY:
+        //     state->layer_text       = "QWERTY";
+        //     state->target_lcd_color = LCD_COLOR(0, 0, intensity);  // red
+        //     break;
+
         case _MOUSE:
             state->layer_text       = "RATON";
             state->target_lcd_color = LCD_COLOR(160, saturation, intensity);  // purple
@@ -67,6 +78,11 @@ static void get_visualizer_layer_and_color(visualizer_state_t* state) {
             state->layer_text       = "SIMBOLOS";
             state->target_lcd_color = LCD_COLOR(0, saturation, intensity);
             break;
+        case _NUMERICO:
+            state->layer_text       = "TEC NUMERICO";
+            state->target_lcd_color = LCD_COLOR(20, saturation, intensity);
+            break;
+
         default:
             // If we're not on one of the special layers, don't change
             // (so we'll show the default layer state, set above)

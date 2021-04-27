@@ -8,6 +8,7 @@
 #define _FN         2  // Capa Funciones
 #define _SIMBOLOS   3  // Capa SIMBOLOS
 #define _MOUSE      4  // Capa RATON
+#define _NUMERICO   5  // Capa Teclado Numerico
 
 #define KC_MAC_UNDO LGUI(KC_Z)
 #define KC_MAC_CUT LGUI(KC_X)
@@ -128,15 +129,13 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_LLA] = ACTION_TAP_DANCE_DOUBLE(ES_LCBR, ES_RCBR),
   [TD_PAR] = ACTION_TAP_DANCE_DOUBLE(ES_LPRN, ES_RPRN),
   [TD_PAC] = ACTION_TAP_DANCE_DOUBLE(ES_LBRC, ES_RBRC),
-
-
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* BASE (QWERTY)
      *
      * ┌──────┬────┬────┬────┬────┬────┬────┐              ┌────┬────┬────┬────┬────┬────┬──────┐
-     * │ ESC  │  1 │  2 │  3 │  4 │  5 │CLMK│              │CLMK│  6 │  7 │  8 │  9 │  0 │  '   │
+     * │ ESC  │  1 │  2 │  3 │  4 │  5 │CLMK│              │TNUM│  6 │  7 │  8 │  9 │  0 │  '   │
      * ├──────┼────┼────┼────┼────┼────┼────┤              ├────┼────┼────┼────┼────┼────┼──────┤
      * │ TAB  │  Q │  W │  E │  R │  T │MOUS│              │MOUS│  Y │  U │  I │  O │  P │  `   │
      * ├──────┼────┼────┼────┼────┼────┤    │              │    ├────┼────┼────┼────┼────┼──────┤
@@ -144,7 +143,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ├──────┼────┼────┼────┼────┼────┤  º │              │FN  ├────┼────┼────┼────┼────┼──────┤
      * │MAYUS │  Z │  X │  C │  V │  B │    │              │    │  N │  M │  , │  . │  - │MAYUS │
      * └─┬────┼────┼────┼────┼────┼────┴────┘              └────┴────┼────┼────┼────┼────┼────┬─┘
-     *   │LCtl│LGUI|LAlt│ FN │SIMB│                                  │  ← │  ↑ │  → │  ↓ │SIMB│
+     *   │LCtl│LGUI|LAlt│ FN │SIMB│                                  │SIMB│  ← │  ↑ │  → │  ↓ │
      *   └────┴────┴────┴────┴────┘    ┌────┬────┐    ┌────┬────┐    └────┴────┴────┴────┴────┘
      *                                 │Home│ End│    │RAlt│RCtl│
      *                            ┌────┼────┼────┤    ├────┼────┼────┐
@@ -155,7 +154,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_QWERTY] = LAYOUT_ergodox(  // QWERTY persistent layer
         // left hand
-        KC_ESC,  TD(TD_1),    TD(TD_2),    TD(TD_3),    TD(TD_4),      TD(TD_5),    COLEMAK,
+        KC_ESC,  TD(TD_1),    TD(TD_2),    TD(TD_3),    TD(TD_4),      TD(TD_5),    DF(_COLEMAK),
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,    TT(_MOUSE),
         KC_CAPS, (KC_A),    (KC_S),    (KC_D),    (KC_F),      KC_G,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,      KC_B,    ES_MORD,
@@ -164,12 +163,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                        KC_PGUP,
                                    KC_BSPC, KC_DEL,    KC_PGDN,
         // right hand
-        COLEMAK, TD(TD_6), TD(TD_7), TD(TD_8), TD(TD_9),TD(TD_10), TD(TD_11),
+        TT(_NUMERICO), TD(TD_6), TD(TD_7), TD(TD_8), TD(TD_9),TD(TD_10), TD(TD_11),
         TT(_MOUSE), KC_Y, KC_U, KC_I, KC_O, KC_P, TD(TD_12),
                  KC_H, (KC_J), (KC_K), (KC_L), (KC_SCLN),  KC_QUOT,
         TT(_FN), KC_N, KC_M, TD(TD_PC), KC_DOT,  KC_SLSH,  KC_RSFT,
-                            KC_LEFT, KC_UP, KC_DOWN, KC_RIGHT, TT(_SIMBOLOS),
-        KC_RALT, KC_RCTRL,
+                            TT(_SIMBOLOS), KC_LEFT, KC_UP, KC_DOWN, KC_RIGHT,        KC_RALT, KC_RCTRL,
         KC_INS,
         KC_APP, KC_ENT,   KC_SPC),
 
@@ -195,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_COLEMAK] = LAYOUT_ergodox(  // Colemak persistent layer (default)
         // left hand
-        KC_ESC,  TD(TD_1),    TD(TD_2),    TD(TD_3),    TD(TD_4),      TD(TD_5),    QWERTY,
+        KC_ESC,  TD(TD_1),    TD(TD_2),    TD(TD_3),    TD(TD_4),      TD(TD_5),    DF(_QWERTY),
         KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,      KC_G, TT(_MOUSE),
         KC_CAPS, KC_A,    KC_R,    KC_S,    KC_T,      KC_D,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,      KC_B, ES_MORD,
@@ -204,7 +202,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                        KC_PGUP,
                                    KC_BSPC, KC_DEL,    KC_PGDN,
         // right hand
-        QWERTY, TD(TD_6), TD(TD_7), TD(TD_8), TD(TD_9),TD(TD_10), TD(TD_11),
+        TT(_NUMERICO), TD(TD_6), TD(TD_7), TD(TD_8), TD(TD_9),TD(TD_10), TD(TD_11),
         TT(_MOUSE), KC_J,     KC_L,    KC_U,     KC_Y,    KC_SCLN,  TD(TD_12),
                  KC_H,     KC_N,    KC_E,     KC_I,    KC_O,     KC_QUOT,
         TT(_FN), KC_K,     KC_M,    KC_DOT,  KC_SLSH,  KC_SLSH,  KC_RSFT,
@@ -215,7 +213,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* SIMBOLOS : Simbolos2
      * ┌──────┬────┬────┬────┬────┬────┬────┐              ┌────┬────┬────┬────┬────┬────┬──────┐
-     * │      │    │    │    │    │    │    │              │    │    │ BN │  / │  * │  - │ HOME │
+     * │      │    │    │    │    │    │    │              │    │    │    │  / │  * │  - │ HOME │
      * ├──────┼────┼────┼────┼────┼────┼────┤              ├────┼────┼────┼────┼────┼────┼──────┤
      * │      │ [] │  * │  + │  @ │  \ │    │              │    │    │  7 │  8 │  9 │  + │  END │
      * ├──────┼────┼────┼────┼────┼────┤    │              │    ├────┼────┼────┼────┼────┼──────┤
@@ -244,6 +242,46 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                      _______,
                                    _______, _______, _______,
         // right hand
+        _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,  _______,
+                 _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______,
+                          _______, _______, _______, _______, _______,
+        _______, _______,
+        _______,
+        _______, _______, _______),
+
+/* Teclado Numérico
+     * ┌──────┬────┬────┬────┬────┬────┬────┐              ┌────┬────┬────┬────┬────┬────┬──────┐
+     * │      │    │    │    │    │    │    │              │    │    │ BN │  / │  * │  - │ HOME │
+     * ├──────┼────┼────┼────┼────┼────┼────┤              ├────┼────┼────┼────┼────┼────┼──────┤
+     * │      │    │    │    │    │    │    │              │    │    │  7 │  8 │  9 │  + │  END │
+     * ├──────┼────┼────┼────┼────┼────┤    │              │    ├────┼────┼────┼────┼────┼──────┤
+     * │      │    │    │    │    │    ├────┤              ├────┤    │  4 │  5 │  6 │  - │ PGUP │
+     * ├──────┼────┼────┼────┼────┼────┤    │              │    ├────┼────┼────┼────┼────┼──────┤
+     * │      │    │    │    │    │    │    │              │    │    │  1 │  2 │  3 │  = │ PGDW │
+     * └─┬────┼────┼────┼────┼────┼────┴────┘              └────┴────┼────┼────┼────┼────┼────┬─┘
+     *   │    │    │    │    │    │                                  │  0 │  . │Entr│    │    │
+     *   └────┴────┴────┴────┴────┘    ┌────┬────┐    ┌────┬────┐    └────┴────┴────┴────┴────┘
+     *                                 │    │    │    │    │    │
+     *                            ┌────┼────┼────┤    ├────┼────┼────┐
+     *                            │    │    │    │    │    │    │    │
+     *                            │    │    ├────┤    ├────┤    │    │
+     *                            │    │    │    │    │    │    │    │
+     *                            └────┴────┴────┘    └────┴────┴────┘
+     */
+
+    [_NUMERICO] = LAYOUT_ergodox(
+        // left hand
+        _______, _______,   _______,   _______,   _______,   _______,   _______,
+        _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______,
+                                            _______, _______,
+                                                     _______,
+                                   _______, _______, _______,
+        // right hand
         _______, _______, KC_NLCK, KC_PSLS, KC_PAST, KC_KP_MINUS, KC_HOME,
         _______, _______, KC_P7, KC_P8, KC_P9, KC_KP_PLUS,  KC_END,
                  _______, KC_P4, KC_P5, KC_P6, KC_KP_MINUS, KC_PGUP,
@@ -253,6 +291,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,
         _______, _______, _______),
 
+
     /* FUNCTION LAYER: Function keys and interaction
      * ┌──────┬────┬────┬────┬────┬────┬────┐              ┌────┬────┬────┬────┬────┬────┬──────┐
      * │      │ F1 │ F2 │ F3 │ F4 │ F5 │PrtS│              │    │ F6 │ F7 │ F8 │ F9 │ F11│  F11 │
@@ -260,7 +299,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * │      │    │    │    │    │    │CatP│              │    │    │    │    │ScUp│ScRt│  F12 │
      * ├──────┼────┼────┼────┼────┼────┤    │              │    ├────┼────┼────┼────┼────┼──────┤
      * │      │    │    │    │C V │C C ├────┤              ├────┤    │    │    │    │    │      │
-     * ├──────┼────┼────┼────┼────┼────┤    │              │    ├────┼────┼────┼────┼────┼──────┤
+     * ├──────┼────┼────┼────┼────┼────┤ [] │              │    ├────┼────┼────┼────┼────┼──────┤
      * │      │    │    │    │    │C X │    │              │    │    │    │    │    │    │      │
      * └─┬────┼────┼────┼────┼────┼────┴────┘              └────┴────┼────┼────┼────┼────┼────┬─┘
      *   │    │    │    │    │    │                                  │    │    │    │    │    │
@@ -277,7 +316,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_PSCR,
         _______, _______, _______, _______, _______, _______, SGUI(KC_S),
         _______, _______, _______, _______, LCTL(KC_V), LCTL(KC_C),
-        _______, _______, _______, _______, _______, LCTL(KC_X), _______,
+        _______, _______, _______, _______, _______, LCTL(KC_X), KC_SPC,
         _______, _______, _______, _______, _______,
                                             _______, _______,  // Web forward/back
                                                      _______,
