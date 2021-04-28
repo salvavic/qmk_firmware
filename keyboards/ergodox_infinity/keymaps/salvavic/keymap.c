@@ -26,6 +26,10 @@
 #define LSA_T(kc) MT(MOD_LSFT | MOD_LALT, kc)
 #define BP_NDSH_MAC ALGR(KC_8)
 
+
+// Macros y combos:
+#define M_CF4 LCTL(KC_F4)
+
 // #define ES_MORD KC_GRV  // º
 // #define ES_QUOT KC_MINS // '
 // #define ES_IEXL KC_EQL  // ¡
@@ -296,7 +300,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ┌──────┬────┬────┬────┬────┬────┬────┐              ┌────┬────┬────┬────┬────┬────┬──────┐
      * │      │ F1 │ F2 │ F3 │ F4 │ F5 │PrtS│              │    │ F6 │ F7 │ F8 │ F9 │ F11│  F11 │
      * ├──────┼────┼────┼────┼────┼────┼────┤              ├────┼────┼────┼────┼────┼────┼──────┤
-     * │      │    │    │    │    │    │CatP│              │    │    │    │    │ScUp│ScRt│  F12 │
+     * │      │    │    │    │CF4 │    │CatP│              │    │    │    │    │ScUp│ScRt│  F12 │
      * ├──────┼────┼────┼────┼────┼────┤    │              │    ├────┼────┼────┼────┼────┼──────┤
      * │      │    │    │    │C V │C C ├────┤              ├────┤    │    │    │    │    │      │
      * ├──────┼────┼────┼────┼────┼────┤ [] │              │    ├────┼────┼────┼────┼────┼──────┤
@@ -314,7 +318,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_FN] = LAYOUT_ergodox(
         // left hand
         _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_PSCR,
-        _______, _______, _______, _______, _______, _______, SGUI(KC_S),
+        _______, _______, _______, _______, M_CF4, _______, SGUI(KC_S),
         _______, _______, _______, _______, LCTL(KC_V), LCTL(KC_C),
         _______, _______, _______, _______, _______, LCTL(KC_X), KC_SPC,
         _______, _______, _______, _______, _______,
