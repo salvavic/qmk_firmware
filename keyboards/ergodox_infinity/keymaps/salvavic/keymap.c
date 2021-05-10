@@ -360,7 +360,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         RESET,   _______    , _______   , _______       , _______, _______, _______,
         _______, _______    , KC_MS_UP  , _______       ,  _______, KC_MS_ACCEL0, _______,
         _______, KC_MS_LEFT , KC_MS_DOWN, KC_MS_RIGHT   ,  _______, KC_MS_ACCEL1,
-        _______, KC_WH_U    , KC_WH_D   , _______       ,  _______, KC_MS_ACCEL2, _______,
+        _______, KC_WH_U    , KC_WH_D   , KC_MS_BTN1  ,  KC_MS_BTN2, KC_MS_ACCEL2, _______,
         _______, _______    , _______   , _______       ,  _______,
                                             KC_WBAK, KC_WFWD,  // Web forward/back
                                                          _______,
