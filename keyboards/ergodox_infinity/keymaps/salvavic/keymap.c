@@ -319,10 +319,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_FN] = LAYOUT_ergodox(
         // left hand
-        XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_PSCR,
-        XXXXXXX, XXXXXXX, XXXXXXX, M_WE , M_CF4, XXXXXXX, SGUI(KC_S),
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LCTL(KC_V), LCTL(KC_C),
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LCTL(KC_X), XXXXXXX,
+        _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_PSCR,
+        _______, XXXXXXX, XXXXXXX, M_WE , M_CF4, XXXXXXX, SGUI(KC_S),
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, LCTL(KC_V), LCTL(KC_C),
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LCTL(KC_X), XXXXXXX,
         _______, _______, _______, _______, _______,
                                             _______, _______,
                                                      _______,
