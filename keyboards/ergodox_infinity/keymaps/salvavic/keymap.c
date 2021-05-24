@@ -31,6 +31,30 @@
 #define M_CF4 LCTL(KC_F4)
 #define M_WE G(KC_E)
 
+// COLEMAK - home row mods
+#define HOMEQ_A LGUI_T(KC_A)
+#define HOMEQ_R LALT_T(KC_R)
+#define HOMEQ_S LSFT_T(KC_S)
+#define HOMEQ_T LCTL_T(KC_T)
+#define HOMEQ_O LGUI_T(KC_O)
+#define HOMEQ_I LALT_T(KC_I)
+#define HOMEQ_E RSFT_T(KC_E)
+#define HOMEQ_N LCTL_T(KC_N)
+// QWERTY - home row mods
+#define HOME_A LGUI_T(KC_A)
+#define HOME_S LALT_T(KC_S)
+#define HOME_D LSFT_T(KC_D)
+#define HOME_F LCTL_T(KC_F)
+#define HOME_NT LGUI_T(ES_NTIL)
+#define HOME_K LALT_T(KC_K)
+#define HOME_L RSFT_T(KC_L)
+#define HOME_J LCTL_T(KC_J)
+
+// One Shot Shifts
+#define OS_LSFT OSM(MOD_LSFT)
+#define OS_RSFT OSM(MOD_RSFT)
+
+
 // #define ES_MORD KC_GRV  // º
 // #define ES_QUOT KC_MINS // '
 // #define ES_IEXL KC_EQL  // ¡
@@ -160,19 +184,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT_ergodox(  // QWERTY persistent layer
         // left hand
         KC_ESC,  TD(TD_1),    TD(TD_2),    TD(TD_3),    TD(TD_4),      TD(TD_5),    DF(_COLEMAK),
-        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,    TT(_MOUSE),
-        KC_CAPS, (KC_A),    (KC_S),    (KC_D),    (KC_F),      KC_G,
+        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,    TG(_MOUSE),
+        KC_CAPS, LGUI_T(KC_A),    LALT_T(KC_S),    LSFT_T(KC_D),    LCTL_T(KC_F),      KC_G,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,      KC_B,    ES_MORD,
-        KC_LCTL, LALT_T(KC_LGUI), TT(_NUMERICO), TT(_FN),  TT(_SIMBOLOS),
+        KC_LCTL, LALT_T(KC_LGUI), MO(_NUMERICO), MO(_FN),  MO(_SIMBOLOS),
                                             KC_HOME, KC_END,
                                                        KC_PGUP,
                                    KC_BSPC, KC_DEL,    KC_PGDN,
         // right hand
-        TT(_NUMERICO), TD(TD_6), TD(TD_7), TD(TD_8), TD(TD_9),TD(TD_10), TD(TD_11),
-        TT(_MOUSE), KC_Y, KC_U, KC_I, KC_O, KC_P, TD(TD_12),
-                 KC_H, (KC_J), (KC_K), (KC_L), (KC_SCLN),  KC_QUOT,
-        TT(_FN), KC_N, KC_M, TD(TD_PC), KC_DOT,  KC_SLSH,  KC_RSFT,
-                            TT(_SIMBOLOS), TT(_FN), TT(_MOUSE), KC_RALT, KC_RCTRL,
+        TG(_NUMERICO), TD(TD_6), TD(TD_7), TD(TD_8), TD(TD_9),TD(TD_10), TD(TD_11),
+        TG(_MOUSE), KC_Y, KC_U, KC_I, KC_O, KC_P, TD(TD_12),
+                 KC_H, RCTL_T(KC_J), RSFT_T(KC_K), RALT_T(KC_L), RGUI_T(KC_SCLN),  KC_QUOT,
+        TG(_FN), KC_N, KC_M, TD(TD_PC), KC_DOT,  KC_SLSH,  KC_RSFT,
+                            MO(_SIMBOLOS), MO(_FN), TG(_MOUSE), KC_RALT, KC_RCTRL,
                                     KC_RALT, KC_RCTRL,
         KC_INS,
         KC_APP, KC_ENT,   KC_SPC),
@@ -201,18 +225,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         KC_ESC,  TD(TD_1),    TD(TD_2),    TD(TD_3),    TD(TD_4),      TD(TD_5),    DF(_QWERTY),
         KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,      KC_G, TT(_MOUSE),
-        KC_CAPS, KC_A,    KC_R,    KC_S,    KC_T,      KC_D,
+        KC_CAPS, LGUI_T(KC_A),    LALT_T(KC_R),    LSFT_T(KC_S),    LCTL_T(KC_T),      KC_D,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,      KC_B, ES_MORD,
-        KC_LCTL, LALT_T(KC_LGUI), TT(_NUMERICO), TT(_FN),  TT(_SIMBOLOS),
+        KC_LCTL, LALT_T(KC_LGUI), MO(_NUMERICO), MO(_FN),  MO(_SIMBOLOS),
                                             KC_HOME, KC_END,
                                                        KC_PGUP,
                                    KC_BSPC, KC_DEL,    KC_PGDN,
         // right hand
-        TT(_NUMERICO), TD(TD_6), TD(TD_7), TD(TD_8), TD(TD_9),TD(TD_10), TD(TD_11),
-        TT(_MOUSE), KC_J,     KC_L,    KC_U,     KC_Y,    KC_SCLN,  TD(TD_12),
-                 KC_H,     KC_N,    KC_E,     KC_I,    KC_O,     KC_QUOT,
-        TT(_FN), KC_K, KC_M, TD(TD_PC), KC_DOT,  KC_SLSH,  KC_RSFT,
-                            TT(_SIMBOLOS), TT(_FN), TT(_MOUSE), KC_RALT, KC_RCTRL,
+        TG(_NUMERICO), TD(TD_6), TD(TD_7), TD(TD_8), TD(TD_9),TD(TD_10), TD(TD_11),
+        TG(_MOUSE), KC_J,     KC_L,    KC_U,     KC_Y,    KC_SCLN,  TD(TD_12),
+                 KC_H,     RCTL_T(KC_N),    RSFT_T(KC_E),     RALT_T(KC_I),    RGUI_T(KC_O),     (KC_QUOT),
+        TG(_FN), KC_K, KC_M, TD(TD_PC), KC_DOT,  KC_SLSH,  KC_RSFT,
+                            MO(_SIMBOLOS), MO(_FN), TG(_MOUSE), KC_RALT, KC_RCTRL,
         KC_RALT, KC_RCTRL,
         KC_INS,
         KC_APP, KC_ENT,   KC_SPC),
