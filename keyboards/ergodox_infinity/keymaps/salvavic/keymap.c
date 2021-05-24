@@ -225,7 +225,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         KC_ESC,  TD(TD_1),    TD(TD_2),    TD(TD_3),    TD(TD_4),      TD(TD_5),    DF(_QWERTY),
         KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,      KC_G, TT(_MOUSE),
-        KC_CAPS, LGUI_T(KC_A),    LALT_T(KC_R),    LSFT_T(KC_S),    LCTL_T(KC_T),      KC_D,
+        KC_CAPS, LGUI_T(KC_A),//    LALT_T(KC_R),    LSFT_T(KC_S),    LCTL_T(KC_T),      KC_D,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,      KC_B, ES_MORD,
         KC_LCTL, LALT_T(KC_LGUI), MO(_NUMERICO), MO(_FN),  MO(_SIMBOLOS),
                                             KC_HOME, KC_END,
@@ -328,9 +328,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ├──────┼────┼────┼────┼────┼────┼────┤              ├────┼────┼────┼────┼────┼────┼──────┤
      * │      │    │    │ GE │CF4 │    │CatP│              │PGUP│    │    │  ↑ │    │    │  F12 │
      * ├──────┼────┼────┼────┼────┼────┤    │              │    ├────┼────┼────┼────┼────┼──────┤
-     * │      │    │    │    │C V │C C ├────┤              ├────┤HOME│  ← │  ↓ │  → │ END│      │
+     * │      │    │    │    │    │    ├────┤              ├────┤HOME│  ← │  ↓ │  → │ END│      │
      * ├──────┼────┼────┼────┼────┼────┤    │              │PGDW├────┼────┼────┼────┼────┼──────┤
-     * │      │    │    │    │    │C X │    │              │    │    │    │    │    │    │      │
+     * │      │    │    │C C │C V │ C C│    │              │    │    │    │    │    │    │      │
      * └─┬────┼────┼────┼────┼────┼────┴────┘              └────┴────┼────┼────┼────┼────┼────┬─┘
      *   │    │    │    │    │    │                                  │    │    │    │    │    │
      *   └────┴────┴────┴────┴────┘    ┌────┬────┐    ┌────┬────┐    └────┴────┴────┴────┴────┘
@@ -345,8 +345,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_PSCR,
         _______, XXXXXXX, XXXXXXX, M_WE , M_CF4, XXXXXXX, SGUI(KC_S),
-        _______, XXXXXXX, XXXXXXX, XXXXXXX, LCTL(KC_V), LCTL(KC_C),
-        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LCTL(KC_X), XXXXXXX,
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        _______, _______, _______, LCTL(KC_X), LCTL(KC_V), LCTL(KC_C), XXXXXXX,
         _______, _______, _______, _______, _______,
                                             _______, _______,
                                                      _______,
