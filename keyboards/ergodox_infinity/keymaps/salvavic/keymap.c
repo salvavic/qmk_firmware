@@ -172,7 +172,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ├──────┼────┼────┼────┼────┼────┤  º │              │FN  ├────┼────┼────┼────┼────┼──────┤
      * │MAYUS │  Z │  X │  C │  V │  B │    │              │    │  N │  M │  , │  . │  - │MAYUS │
      * └─┬────┼────┼────┼────┼────┼────┴────┘              └────┴────┼────┼────┼────┼────┼────┬─┘
-     *   │LCtl│LGUI|LAlt│ FN │SIMB│                                  │SIMB│ FN │    │    │    │
+     *   │LCtl│LGUI|Num │ FN │SIMB│                                  │SIMB│ FN │MOUS│    │    │
      *   └────┴────┴────┴────┴────┘    ┌────┬────┐    ┌────┬────┐    └────┴────┴────┴────┴────┘
      *                                 │Home│ End│    │RAlt│RCtl│
      *                            ┌────┼────┼────┤    ├────┼────┼────┐
@@ -259,7 +259,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                            │    │    ├────┤    ├────┤    │    │
      *                            │    │    │    │    │    │    │    │
      *                            └────┴────┴────┘    └────┴────┴────┘
-     */
+     */%op
 
     [_SIMBOLOS] = LAYOUT_ergodox(
         // left hand
@@ -274,8 +274,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // right hand
         ES_RBRC, _______, _______, _______, _______, _______, _______,
         ES_RCBR, ES_EURO, S(KC_4), S(KC_5), _______, _______, _______,
-                 ES_IQUE, ES_QUES, _______, _______, _______, _______,
-        ES_RPRN, ES_IEXL, ES_EXLM, _______, _______, _______, _______,
+                 ES_IQUE, ES_QUES, ES_LPRN, ES_RPRN, _______, _______,
+        ES_RPRN, ES_IEXL, ES_EXLM, ES_LCBR, ES_RCBR, _______, _______,
                           _______, _______, _______, _______, _______,
         _______, _______,
         _______,
@@ -345,7 +345,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_PSCR,
         _______, XXXXXXX, XXXXXXX, M_WE , M_CF4, XXXXXXX, SGUI(KC_S),
-        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        _______, _______, _______, _______, _______, _______,
         _______, _______, _______, LCTL(KC_X), LCTL(KC_V), LCTL(KC_C), XXXXXXX,
         _______, _______, _______, _______, _______,
                                             _______, _______,
