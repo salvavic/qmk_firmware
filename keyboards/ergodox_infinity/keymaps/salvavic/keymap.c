@@ -225,7 +225,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         KC_ESC,  TD(TD_1),    TD(TD_2),    TD(TD_3),    TD(TD_4),      TD(TD_5),    DF(_QWERTY),
         KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,      KC_G, TT(_MOUSE),
-        KC_CAPS, LGUI_T(KC_A),//    LALT_T(KC_R),    LSFT_T(KC_S),    LCTL_T(KC_T),      KC_D,
+        KC_CAPS, LGUI_T(KC_A),    LALT_T(KC_R),    LSFT_T(KC_S),    LCTL_T(KC_T),      KC_D,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,      KC_B, ES_MORD,
         KC_LCTL, LALT_T(KC_LGUI), MO(_NUMERICO), MO(_FN),  MO(_SIMBOLOS),
                                             KC_HOME, KC_END,
