@@ -1,22 +1,15 @@
 #pragma once
 
-// place overrides here
-// #define UNICODE_SELECTED_MODES UC_LNX, UC_OSX, UC_WIN, UC_WINC
-// #define UNICODE_SELECTED_MODES UC_LNX
-// #define UNICODE_KEY_LNX LCTL(LSFT(KC_U))
-#undef TAPPING_TERM
-// Configure the global tapping term (default: 200ms)
-#define TAPPING_TERM 150
-// Prevent normal rollover on alphas from accidentally triggering mods.
-#define IGNORE_MOD_TAP_INTERRUPT
-// Apply the modifier on keys that are tapped during a short hold of a modtap
-#define permissive_hold
-
-// Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
-#define TAPPING_FORCE_HOLD
-
 // #undef TAPPING_TOGGLE
 // #define TAPPING_TOGGLE 2
+#undef TAPPING_TERM
+#define TAPPING_TERM 150
+#define TAPPING_TERM_PER_KEY
+#define LONG_TAPPING_TERM 1000
+// #define PERMISSIVE_HOLD
+#define IGNORE_MOD_TAP_INTERRUPT
+// #define TAPPING_FORCE_HOLD
+
 
 #define EE_HANDS
 

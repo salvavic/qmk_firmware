@@ -10,14 +10,14 @@
 #define _MOUSE      4  // Capa RATON
 #define _NUMERICO   5  // Capa Teclado Numerico
 
-#define KC_MAC_UNDO LGUI(KC_Z)
-#define KC_MAC_CUT LGUI(KC_X)
-#define KC_MAC_COPY LGUI(KC_C)
-#define KC_MAC_PASTE LGUI(KC_V)
-#define KC_PC_UNDO LCTL(KC_Z)
-#define KC_PC_CUT LCTL(KC_X)
-#define KC_PC_COPY LCTL(KC_C)
-#define KC_PC_PASTE LCTL(KC_V)
+#define REDO LCTL(KC_Y)
+#define UNDO LCTL(KC_Z)
+#define CUT LCTL(KC_X)
+#define COPY LCTL(KC_C)
+#define PASTE LCTL(KC_V)
+#define M_CF4 LCTL(KC_F4)
+#define M_WE G(KC_E)
+
 #define ES_LESS_MAC KC_GRAVE
 #define ES_GRTR_MAC LSFT(KC_GRAVE)
 #define ES_BSLS_MAC ALGR(KC_6)
@@ -26,10 +26,6 @@
 #define LSA_T(kc) MT(MOD_LSFT | MOD_LALT, kc)
 #define BP_NDSH_MAC ALGR(KC_8)
 
-
-// Macros y combos:
-#define M_CF4 LCTL(KC_F4)
-#define M_WE G(KC_E)
 
 // COLEMAK - home row mods
 #define HOMEQ_A LGUI_T(KC_A)
@@ -43,12 +39,12 @@
 // QWERTY - home row mods
 #define HOME_A LGUI_T(KC_A)
 #define HOME_S LALT_T(KC_S)
-#define HOME_D LSFT_T(KC_D)
-#define HOME_F LCTL_T(KC_F)
+#define HOME_D LCTL_T(KC_D)
+#define HOME_F LSFT_T(KC_F)
 #define HOME_NT LGUI_T(ES_NTIL)
 #define HOME_K LALT_T(KC_K)
-#define HOME_L RSFT_T(KC_L)
-#define HOME_J LCTL_T(KC_J)
+#define HOME_L LCTL_T(KC_L)
+#define HOME_J RSFT_T(KC_J)
 
 // One Shot Shifts
 #define OS_LSFT OSM(MOD_LSFT)
@@ -158,6 +154,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_LLA] = ACTION_TAP_DANCE_DOUBLE(ES_LCBR, ES_RCBR),
   [TD_PAR] = ACTION_TAP_DANCE_DOUBLE(ES_LPRN, ES_RPRN),
   [TD_PAC] = ACTION_TAP_DANCE_DOUBLE(ES_LBRC, ES_RBRC),
+
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -185,18 +182,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         KC_ESC,  TD(TD_1),    TD(TD_2),    TD(TD_3),    TD(TD_4),      TD(TD_5),    DF(_COLEMAK),
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,    TG(_MOUSE),
-        KC_CAPS, LGUI_T(KC_A),    LALT_T(KC_S),    LSFT_T(KC_D),    LCTL_T(KC_F),      KC_G,
+        KC_CAPS, LGUI_T(KC_A),    LALT_T(KC_S),    LCTL_T(KC_D),    LSFT_T(KC_F),      KC_G,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,      KC_B,    ES_MORD,
-        KC_LCTL, LALT_T(KC_LGUI), MO(_NUMERICO), MO(_FN),  MO(_SIMBOLOS),
+        KC_LCTL, LALT_T(KC_LGUI), TT(_NUMERICO), TT(_FN),  TT(_SIMBOLOS),
                                             KC_HOME, KC_END,
                                                        KC_PGUP,
                                    KC_BSPC, KC_DEL,    KC_PGDN,
         // right hand
         TG(_NUMERICO), TD(TD_6), TD(TD_7), TD(TD_8), TD(TD_9),TD(TD_10), TD(TD_11),
         TG(_MOUSE), KC_Y, KC_U, KC_I, KC_O, KC_P, TD(TD_12),
-                 KC_H, RCTL_T(KC_J), RSFT_T(KC_K), RALT_T(KC_L), RGUI_T(KC_SCLN),  KC_QUOT,
+                 KC_H, RSFT_T(KC_J), RCTL_T(KC_K), RALT_T(KC_L), RGUI_T(KC_SCLN),  KC_QUOT,
         TG(_FN), KC_N, KC_M, TD(TD_PC), KC_DOT,  KC_SLSH,  KC_RSFT,
-                            MO(_SIMBOLOS), MO(_FN), TG(_MOUSE), KC_RALT, KC_RCTRL,
+                            TT(_SIMBOLOS), TT(_FN), TG(_MOUSE), KC_RALT, KC_RCTRL,
                                     KC_RALT, KC_RCTRL,
         KC_INS,
         KC_APP, KC_ENT,   KC_SPC),
@@ -225,18 +222,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         KC_ESC,  TD(TD_1),    TD(TD_2),    TD(TD_3),    TD(TD_4),      TD(TD_5),    DF(_QWERTY),
         KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,      KC_G, TT(_MOUSE),
-        KC_CAPS, LGUI_T(KC_A),    LALT_T(KC_R),    LSFT_T(KC_S),    LCTL_T(KC_T),      KC_D,
+        KC_CAPS, LGUI_T(KC_A),    LALT_T(KC_R),    LCTL_T(KC_S),    LSFT_T(KC_T),      KC_D,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,      KC_B, ES_MORD,
-        KC_LCTL, LALT_T(KC_LGUI), MO(_NUMERICO), MO(_FN),  MO(_SIMBOLOS),
+        KC_LCTL, LALT_T(KC_LGUI), TT(_NUMERICO), TT(_FN),  TT(_SIMBOLOS),
                                             KC_HOME, KC_END,
                                                        KC_PGUP,
                                    KC_BSPC, KC_DEL,    KC_PGDN,
         // right hand
         TG(_NUMERICO), TD(TD_6), TD(TD_7), TD(TD_8), TD(TD_9),TD(TD_10), TD(TD_11),
         TG(_MOUSE), KC_J,     KC_L,    KC_U,     KC_Y,    KC_SCLN,  TD(TD_12),
-                 KC_H,     RCTL_T(KC_N),    RSFT_T(KC_E),     RALT_T(KC_I),    RGUI_T(KC_O),     (KC_QUOT),
+                 KC_H,     RSFT_T(KC_N),    RCTL_T(KC_E),     RALT_T(KC_I),    RGUI_T(KC_O),     (KC_QUOT),
         TG(_FN), KC_K, KC_M, TD(TD_PC), KC_DOT,  KC_SLSH,  KC_RSFT,
-                            MO(_SIMBOLOS), MO(_FN), TG(_MOUSE), KC_RALT, KC_RCTRL,
+                            TT(_SIMBOLOS), TT(_FN), TG(_MOUSE), KC_RALT, KC_RCTRL,
         KC_RALT, KC_RCTRL,
         KC_INS,
         KC_APP, KC_ENT,   KC_SPC),
@@ -247,9 +244,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ├──────┼────┼────┼────┼────┼────┼────┤              ├────┼────┼────┼────┼────┼────┼──────┤
      * │      │  = │  * │  + │  @ │  \ │ {  │              │ }  │ €  │  $ │  % │    │    │      │
      * ├──────┼────┼────┼────┼────┼────┤    │              │    ├────┼────┼────┼────┼────┼──────┤
-     * │      │  " │  ' │  / │  & │  | ├────┤              ├────┤ ¿  │  ? │    │    │    │      │
+     * │      │  " │  ' │  / │  & │  | ├────┤              ├────┤ ¿  │  ? │  ( │ )  │    │      │
      * ├──────┼────┼────┼────┼────┼────┤ (  │              │ )  ├────┼────┼────┼────┼────┼──────┤
-     * │      │ <  │ >  │  $ │  - │  # │    │              │    │ ¡  │  ! │    │    │    │      │
+     * │      │ <  │ >  │  $ │  - │  # │    │              │    │ ¡  │  ! │  { │ }  │    │      │
      * └─┬────┼────┼────┼────┼────┼────┴────┘              └────┴────┼────┼────┼────┼────┼────┬─┘
      *   │    │    │    │    │    │                                  │    │    │    │    │    │
      *   └────┴────┴────┴────┴────┘    ┌────┬────┐    ┌────┬────┐    └────┴────┴────┴────┴────┘
@@ -259,7 +256,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                            │    │    ├────┤    ├────┤    │    │
      *                            │    │    │    │    │    │    │    │
      *                            └────┴────┴────┘    └────┴────┴────┘
-     */%op
+     */
 
     [_SIMBOLOS] = LAYOUT_ergodox(
         // left hand
@@ -273,7 +270,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    _______, _______, _______,
         // right hand
         ES_RBRC, _______, _______, _______, _______, _______, _______,
-        ES_RCBR, ES_EURO, S(KC_4), S(KC_5), _______, _______, _______,
+        ES_RCBR, ES_EURO, S(KC_4), S(KC_5), ES_LBRC, ES_RBRCD, _______,
                  ES_IQUE, ES_QUES, ES_LPRN, ES_RPRN, _______, _______,
         ES_RPRN, ES_IEXL, ES_EXLM, ES_LCBR, ES_RCBR, _______, _______,
                           _______, _______, _______, _______, _______,
@@ -328,7 +325,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ├──────┼────┼────┼────┼────┼────┼────┤              ├────┼────┼────┼────┼────┼────┼──────┤
      * │      │    │    │ GE │CF4 │    │CatP│              │PGUP│    │    │  ↑ │    │    │  F12 │
      * ├──────┼────┼────┼────┼────┼────┤    │              │    ├────┼────┼────┼────┼────┼──────┤
-     * │      │    │    │    │    │    ├────┤              ├────┤HOME│  ← │  ↓ │  → │ END│      │
+     * │      │    │    │REDO│UNDO│    ├────┤              ├────┤HOME│  ← │  ↓ │  → │ END│      │
      * ├──────┼────┼────┼────┼────┼────┤    │              │PGDW├────┼────┼────┼────┼────┼──────┤
      * │      │    │    │C C │C V │ C C│    │              │    │    │    │    │    │    │      │
      * └─┬────┼────┼────┼────┼────┼────┴────┘              └────┴────┼────┼────┼────┼────┼────┬─┘
@@ -345,8 +342,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_PSCR,
         _______, XXXXXXX, XXXXXXX, M_WE , M_CF4, XXXXXXX, SGUI(KC_S),
-        _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, LCTL(KC_X), LCTL(KC_V), LCTL(KC_C), XXXXXXX,
+        _______, _______, _______, REDO, UNDO, _______,
+        _______, _______, _______, CUT, PASTE, COPY, XXXXXXX,
         _______, _______, _______, _______, _______,
                                             _______, _______,
                                                      _______,
@@ -402,6 +399,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LGUI_T(KC_A):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case LALT_T(KC_S):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case LCTL_T(KC_D):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case LSFT_T(KC_F):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case RSFT_T(KC_J):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case RCTL_T(KC_K):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case RALT_T(KC_L):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case LGUI_T(KC_L):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+
+        default:
+            return TAPPING_TERM;
+    }
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
