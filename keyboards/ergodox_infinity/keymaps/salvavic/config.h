@@ -8,7 +8,10 @@
 #define LONG_TAPPING_TERM 500
 // #define PERMISSIVE_HOLD
 #define IGNORE_MOD_TAP_INTERRUPT
-// #define TAPPING_FORCE_HOLD
+
+
+
+#define TAPPING_FORCE_HOLD
 
 
 #define EE_HANDS
