@@ -418,6 +418,21 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case LGUI_T(KC_L):
             return TAPPING_TERM + LONG_TAPPING_TERM;
 
+        case LALT_T(KC_R):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case LSFT_T(KC_S):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case LCTL_T(KC_T):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case RGUI_T(KC_O):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case RALT_T(KC_I):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case RSFT_T(KC_N):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case RCTL_T(KC_E):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+
         default:
             return TAPPING_TERM;
     }
