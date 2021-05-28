@@ -342,8 +342,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_PSCR,
         _______, XXXXXXX, XXXXXXX, M_WE , M_CF4, XXXXXXX, SGUI(KC_S),
-        _______, _______, _______, REDO, UNDO, _______,
-        _______, _______, _______, CUT, PASTE, COPY, XXXXXXX,
+        _______, _______, _______, _______, _______, _______,
+        _______, REDO, UNDO, CUT, PASTE, COPY, XXXXXXX,
         _______, _______, _______, _______, _______,
                                             _______, _______,
                                                      _______,
