@@ -433,6 +433,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case RCTL_T(KC_E):
             return TAPPING_TERM + LONG_TAPPING_TERM;
 
+        // case TT(_FN):
+        //     return TAPPING_TERM + LONG_TAPPING_TERM;
+
         default:
             return TAPPING_TERM;
     }

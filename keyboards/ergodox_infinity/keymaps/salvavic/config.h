@@ -1,7 +1,7 @@
 #pragma once
 
 #undef TAPPING_TERM
-#define TAPPING_TERM 150
+#define TAPPING_TERM 175
 #define TAPPING_TERM_PER_KEY
 #define LONG_TAPPING_TERM 500
 // #define PERMISSIVE_HOLD
@@ -10,6 +10,4 @@
 #undef TAPPING_TOGGLE
 #define TAPPING_TOGGLE 2
 
-
 #define EE_HANDS
-
