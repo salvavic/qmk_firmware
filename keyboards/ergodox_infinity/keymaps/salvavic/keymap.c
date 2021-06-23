@@ -331,11 +331,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * └─┬────┼────┼────┼────┼────┼────┴────┘              └────┴────┼────┼────┼────┼────┼────┬─┘
      *   │    │    │    │    │    │                                  │    │    │    │    │    │
      *   └────┴────┴────┴────┴────┘    ┌────┬────┐    ┌────┬────┐    └────┴────┴────┴────┴────┘
-     *                                 │    │    │    │    │    │
+     *                                 │WbBk│WbFd│    │Prev│Next│
      *                            ┌────┼────┼────┤    ├────┼────┼────┐
-     *                            │    │    │    │    │    │    │    │
-     *                            │    │    ├────┤    ├────┤    │    │
-     *                            │    │    │    │    │    │    │    │
+     *                            │    │    │    │    │Vol+│    │    │
+     *                            │    │    ├────┤    ├────┤Mute│Play│
+     *                            │    │    │    │    │Vol-│    │    │
      *                            └────┴────┴────┘    └────┴────┴────┘
      */
     [_FN] = LAYOUT_ergodox(
@@ -345,7 +345,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______,
         _______, REDO, UNDO, CUT, PASTE, COPY, XXXXXXX,
         _______, _______, _______, _______, _______,
-                                            _______, _______,
+                                            KC_WBAK, KC_WFWD,  // Web forward/back
                                                      _______,
                                    _______, _______, _______,
         // right hand
@@ -354,9 +354,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                  KC_HOME, KC_LEFT, KC_DOWN, KC_RIGHT, KC_END, XXXXXXX,
         KC_PGDN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                           _______, _______, _______, _______, _______,
-        _______, _______,
-        _______,
-        _______, _______, _______),
+        KC_MPRV, KC_MNXT,
+        KC_VOLU,
+        KC_VOLD, KC_MUTE, KC_MPLY),
 
     /* MOUSE: Ratón
      * ┌──────┬────┬────┬────┬────┬────┬────┐              ┌────┬────┬────┬────┬────┬────┬──────┐
