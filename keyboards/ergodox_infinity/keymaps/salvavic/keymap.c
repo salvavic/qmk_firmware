@@ -128,7 +128,7 @@ enum {
     //Teclas de Funcion
     TD_1 = 0,  TD_2, TD_3, TD_4, TD_5, TD_6, TD_7, TD_8, TD_9, TD_10, TD_11, TD_12,
     TD_PC, TD_ALT,
-    TD_INT, TD_EXC, TD_ANG, TD_LLA, TD_PAR, TD_PAC, TD_DOT
+    TD_INT, TD_EXC, TD_ANG, TD_LLA, TD_PAR, TD_PAC
 };
 
 qk_tap_dance_action_t tap_dance_actions[] = {
@@ -145,7 +145,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_11] = ACTION_TAP_DANCE_DOUBLE(ES_QUOT, KC_F11),
   [TD_12] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_F12),
   [TD_PC] = ACTION_TAP_DANCE_DOUBLE(KC_COMM, S(KC_COMM)),
-  [TD_DOT] = ACTION_TAP_DANCE_DOUBLE(KC_DOT, S(KC_DOT)),
 
   [TD_ALT] = ACTION_TAP_DANCE_DOUBLE(KC_RALT, KC_LALT),
 
@@ -433,6 +432,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM + LONG_TAPPING_TERM;
         case RCTL_T(KC_E):
             return TAPPING_TERM + LONG_TAPPING_TERM;
+
+        // case TT(_FN):
+        //     return TAPPING_TERM + LONG_TAPPING_TERM;
 
         default:
             return TAPPING_TERM;
