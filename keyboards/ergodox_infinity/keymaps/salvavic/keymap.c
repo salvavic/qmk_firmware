@@ -128,7 +128,7 @@ enum {
     //Teclas de Funcion
     TD_1 = 0,  TD_2, TD_3, TD_4, TD_5, TD_6, TD_7, TD_8, TD_9, TD_10, TD_11, TD_12,
     TD_PC, TD_ALT,
-    TD_INT, TD_EXC, TD_ANG, TD_LLA, TD_PAR, TD_PAC
+    TD_INT, TD_EXC, TD_ANG, TD_LLA, TD_PAR, TD_PAC, TD_DOT
 };
 
 qk_tap_dance_action_t tap_dance_actions[] = {
@@ -145,6 +145,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_11] = ACTION_TAP_DANCE_DOUBLE(ES_QUOT, KC_F11),
   [TD_12] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_F12),
   [TD_PC] = ACTION_TAP_DANCE_DOUBLE(KC_COMM, S(KC_COMM)),
+  [TD_DOT] = ACTION_TAP_DANCE_DOUBLE(KC_DOT, S(KC_DOT)),
 
   [TD_ALT] = ACTION_TAP_DANCE_DOUBLE(KC_RALT, KC_LALT),
 
@@ -192,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TG(_NUMERICO), TD(TD_6), TD(TD_7), TD(TD_8), TD(TD_9),TD(TD_10), TD(TD_11),
         TG(_MOUSE), KC_Y, KC_U, KC_I, KC_O, KC_P, TD(TD_12),
                  KC_H, RSFT_T(KC_J), RCTL_T(KC_K), RALT_T(KC_L), RGUI_T(KC_SCLN),  KC_QUOT,
-        TG(_FN), KC_N, KC_M, TD(TD_PC), KC_DOT,  KC_SLSH,  KC_RSFT,
+        TG(_FN), KC_N, KC_M, TD(TD_PC), TD(TD_DOT),  KC_SLSH,  KC_RSFT,
                             TT(_SIMBOLOS), TT(_FN), TG(_MOUSE), KC_RALT, KC_RCTRL,
                                     KC_RALT, KC_RCTRL,
         KC_INS,
@@ -232,7 +233,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TG(_NUMERICO), TD(TD_6), TD(TD_7), TD(TD_8), TD(TD_9),TD(TD_10), TD(TD_11),
         TG(_MOUSE), KC_J,     KC_L,    KC_U,     KC_Y,    KC_SCLN,  TD(TD_12),
                  KC_H,     RSFT_T(KC_N),    RCTL_T(KC_E),     RALT_T(KC_I),    RGUI_T(KC_O),     (KC_QUOT),
-        TG(_FN), KC_K, KC_M, TD(TD_PC), KC_DOT,  KC_SLSH,  KC_RSFT,
+        TG(_FN), KC_K, KC_M, TD(TD_PC), TD(TD_DOT),  KC_SLSH,  KC_RSFT,
                             TT(_SIMBOLOS), TT(_FN), TG(_MOUSE), KC_RALT, KC_RCTRL,
         KC_RALT, KC_RCTRL,
         KC_INS,
@@ -432,9 +433,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM + LONG_TAPPING_TERM;
         case RCTL_T(KC_E):
             return TAPPING_TERM + LONG_TAPPING_TERM;
-
-        // case TT(_FN):
-        //     return TAPPING_TERM + LONG_TAPPING_TERM;
 
         default:
             return TAPPING_TERM;
